@@ -1,8 +1,4 @@
 // PLAYER.CPP
-
-#include <string>
-using namespace std;
-
 #include "Player.h"
 
 Player::Player()

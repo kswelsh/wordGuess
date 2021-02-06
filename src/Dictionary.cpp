@@ -1,12 +1,4 @@
 // DICTIONARY.CPP
-
-#include <string>
-#include <vector>
-#include <fstream>
-#include <iostream>
-#include <time.h>
-using namespace std;
-
 #include "Dictionary.h"
 
 Dictionary::Dictionary(vector<string> dWords)
@@ -15,7 +7,17 @@ Dictionary::Dictionary(vector<string> dWords)
 
 void Dictionary::populateWithConsole()
 {
-	// User Input?
+	string wordInput;
+
+	cout << "Enter a word to add to the dictionary (type 'e' to exit): ";
+	cin >> wordInput;
+
+	while (wordInput != "e" && wordInput != "E")
+	{
+		_dictionaryWords.push_back(wordInput);
+		cout << "Enter a word to add to the dictionary (type 'e' to exit): ";
+		cin >> wordInput;
+	}
 }
 
 void Dictionary::populateWithFile()
@@ -44,9 +46,14 @@ string Dictionary::accessRandomWord()
 	wordSelector = rand() % _dictionaryWords.size();
 	randomWord = _dictionaryWords[wordSelector]; //CONST SECURITY???
 
-	cout << _dictionaryWords.size() << endl; // TEST
-	cout << randomWord << endl; // TEST
-	cout << wordSelector << endl; // TEST
+	// cout << _dictionaryWords.size() << endl; // TEST
+	// cout << randomWord << endl; // TEST
+	// cout << wordSelector << endl; // TEST
+
+	for (int i = 0; _dictionaryWords.size() > i; i++) // TEST
+		{
+			cout << _dictionaryWords[i] << endl;
+		}
 
 	return randomWord;
 }

@@ -3,10 +3,15 @@
 #ifndef __GAMESTATE_H__
 #define __GAMESTATE_H__
 
+#include <string>
+#include <vector>
+#include <iostream> // DOINT KNOW IF NEEDED YET
+using namespace std;
+
 class GameState
 {
 private:
-	string _currentWordGuessed;
+	string _currentWord;
 	string _stateOfWord;
 	vector<char> _lettersIncorrectG;
 	vector<string> _wordsIncorrectG;
@@ -16,19 +21,19 @@ public:
 	GameState(){}
 	GameState(string curGuess, string sOfWord, vector<char> lIncorrect, vector<string> wIncorrect, int aLeft);
 
-	string getCurrentGuess() const;
-	string getWordState() const;
+	string getCurrentWord() const;
+	string getStateOfWord() const;
 	vector<char> getLettersIncorrectG() const;
 	vector<string> getWordsIncorrectG() const;
 	int getAttemptsLeft() const;
 
-	void setCurrentGuess(string);
+	void setCurrentWord(string);
 	void setStateOfWord(string);
 	void setLettersIncorrectG(vector<char>);
 	void setWordsIncorrectG(vector<string>);
 	void setAttemptsLeft(int);
 
-	string matchUserGuess();
+	bool matchUserGuess(string);
 
 };
 
