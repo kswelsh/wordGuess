@@ -19,7 +19,7 @@ private:
 
 public:
 	GameState(){}
-	GameState(string curGuess, string sOfWord, vector<char> lIncorrect, vector<string> wIncorrect, int aLeft);
+	GameState(string curWord, string sOfWord, vector<char> lIncorrect, vector<string> wIncorrect, int aLeft);
 
 	string getCurrentWord() const;
 	string getStateOfWord() const;

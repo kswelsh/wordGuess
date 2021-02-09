@@ -18,42 +18,79 @@ using namespace std;
 
 int main()
 {
-	Dictionary d;
-	Player p;
-	GameState g;
+	Dictionary gameDictionary;
+	Player gameUser;
+	GameState game;
+	string userPlay;
+	string randomWord;
+	string localCurrentWord;
+	string hiddenRandomWord = "";
+	string userGuess;
+	int userPopChoice;
+	bool playerWin = false;
 
-	d.populateWithFile();
+	cout << "1) Through File" << endl;
+	cout << "2) Through User Input" << endl;
+	cout << "Type the corresponding number to choose how to populate the game dictionary:" << endl;
+	cin >> userPopChoice;
 
+	if (userPopChoice == 1)
+	{
+		gameDictionary.populateWithFile();
+	}
+	else if (userPopChoice == 2)
+	{
+		gameDictionary.populateWithConsole();
+	}
+	else
+	{
+		cout << "ERROR: Invalid input; program will not run correctly.";
+	}
 
-	d.accessRandomWord();
-	g.setCurrentWord("hello");
-	g.setStateOfWord("-----");
-	g.matchUserGuess("help");
-	g.matchUserGuess("v");
-	g.matchUserGuess("hey");
-	g.matchUserGuess("uh");
-	g.matchUserGuess("t");
-	g.matchUserGuess("e");
-	g.matchUserGuess("l");
-	g.matchUserGuess("p");
-	g.matchUserGuess("z");
-	g.matchUserGuess("m");
-	g.matchUserGuess("u");
+	cout << "Would you like to play the word guess game? (Type 'y' for yes OR 'n' for no): " << endl;
+	cin >> userPlay;
+	while (userPlay == "y" || userPlay == "Y")
+	{
+		randomWord = gameDictionary.accessRandomWord();
+		game.setCurrentWord(randomWord);
+		localCurrentWord = game.getCurrentWord();
+		game.setAttemptsLeft(localCurrentWord.size());
+		for (int i = 0; localCurrentWord.size() > i; i++)
+		{
+			hiddenRandomWord.append("-");
+		}
+		game.setStateOfWord(hiddenRandomWord);
 
-	cout << g.getStateOfWord() << endl;
-	g.printLettersIncorrectG();
-	g.printWordsIncorrectG();
-	cout << "test" << endl;
+		while (game.getAttemptsLeft() != 0 && playerWin == false)
+		{
+			cout << "You have " << game.getAttemptsLeft() << " attempt(s) left!" << endl;
+			game.printLettersIncorrectG();
+			game.printWordsIncorrectG();
+			cout << "Current Word: " << game.getStateOfWord() << endl;
+			cout << "Guess a letter or a word: " << endl;
+			cin >> userGuess;
+			playerWin = game.matchUserGuess(userGuess);
+			game.setAttemptsLeft(game.getAttemptsLeft()-1);
+		}
 
-	/*
-	p.setPlayerName("kyle");
-	p.setPlayerWins(3);
-	p.setPlayerLosses(2);
-	cout << p.getPlayerName() << endl;
-	cout << p.getPlayerWins() << endl;
-	cout << p.getPlayerLosses() << endl;
-	*/
+		if(playerWin == true)
+		{
+			cout << "Nice! You Win!" << endl;
+			cout << "The correct word was " << game.getCurrentWord() << "." << endl;
+			gameUser.setPlayerWins(gameUser.getPlayerWins()+1);
+		}
+		else
+		{
+			cout << "Sorry... You Lose!" << endl;
+			cout << "The correct word is " << game.getCurrentWord() << "." << endl;
+			gameUser.setPlayerLosses(gameUser.getPlayerLosses()+1);
+		}
 
+		cout << "Would you like to play the word guess game? (Type 'y' for yes OR 'n' for no): " << endl;
+		cin >> userPlay;
+	}
+
+	cout << "You ended with " << gameUser.getPlayerWins() << " win(s) and " << gameUser.getPlayerLosses() << " loss(es)!" << endl;
 
 	return 0;
 }
