@@ -20,8 +20,16 @@ public:
 	Dictionary(vector<string> dWords);
 
 	void populateWithConsole();
+	// pre: none
+	// post: dictionary populated with user inputed word(s)
+
 	void populateWithFile();
+	// pre: none
+	// post: dictionary populated with word(s) from chosen file
+
 	string accessRandomWord();
+	// pre: none
+	// post: returns random word from dictionary
 };
 
 #endif

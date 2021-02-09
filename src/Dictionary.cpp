@@ -9,13 +9,13 @@ void Dictionary::populateWithConsole()
 {
 	string wordInput;
 
-	cout << "Enter a word to add to the dictionary (type 'e' to exit): ";
+	cout << "Enter a word to add to the dictionary (type 'e' to exit): " << endl;
 	cin >> wordInput;
 
 	while (wordInput != "e" && wordInput != "E")
 	{
 		_dictionaryWords.push_back(wordInput);
-		cout << "Enter a word to add to the dictionary (type 'e' to exit): ";
+		cout << "Enter a word to add to the dictionary (type 'e' to exit): " << endl;
 		cin >> wordInput;
 	}
 }
@@ -23,7 +23,12 @@ void Dictionary::populateWithConsole()
 void Dictionary::populateWithFile()
 {
 	string wordInput;
-	ifstream inFile("dictionaryData.txt");
+	string fileName;
+
+	cout << "Enter the file name you would like to use: " << endl;
+	cin >> fileName;
+
+	ifstream inFile(fileName);
 	if (!inFile)
 	{
 		cout << "Error opening file! Exiting program." << endl;
@@ -46,14 +51,14 @@ string Dictionary::accessRandomWord()
 	wordSelector = rand() % _dictionaryWords.size();
 	randomWord = _dictionaryWords[wordSelector]; //CONST SECURITY???
 
-	// cout << _dictionaryWords.size() << endl; // TEST
-	// cout << randomWord << endl; // TEST
-	// cout << wordSelector << endl; // TEST
+	//cout << _dictionaryWords.size() << endl; // TEST
+	//cout << randomWord << endl; // TEST
+	//cout << wordSelector << endl; // TEST
 
-	for (int i = 0; _dictionaryWords.size() > i; i++) // TEST
-		{
-			cout << _dictionaryWords[i] << endl;
-		}
+	//for (int i = 0; _dictionaryWords.size() > i; i++) // TEST
+	//	{
+	//		cout << _dictionaryWords[i] << endl;
+	//	}
 
 	return randomWord;
 }

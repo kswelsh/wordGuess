@@ -15,16 +15,6 @@ string GameState::getStateOfWord() const
 	return _stateOfWord;
 }
 
-vector<char> GameState::getLettersIncorrectG() const
-{
-	return _lettersIncorrectG;
-}
-
-vector<string> GameState::getWordsIncorrectG() const
-{
-	return _wordsIncorrectG;
-}
-
 int GameState::getAttemptsLeft() const
 {
 	return _attemptsLeft;
@@ -38,16 +28,6 @@ void GameState::setCurrentWord(string curWord)
 void GameState::setStateOfWord(string sOfWord)
 {
 	_stateOfWord = sOfWord;
-}
-
-void GameState::setLettersIncorrectG(vector<char> lIncorrect)
-{
-	_lettersIncorrectG = lIncorrect;
-}
-
-void GameState::setWordsIncorrectG(vector<string> wIncorrect)
-{
-	_wordsIncorrectG = wIncorrect;
 }
 
 void GameState::setAttemptsLeft(int aLeft)
@@ -90,5 +70,25 @@ bool GameState::matchUserGuess(string userGuess)
 		playerWin = true;
 	}
 	return playerWin;
+}
+
+void GameState::printLettersIncorrectG()
+{
+	cout << "Current incorrectly guessed letters: ";
+	for (int i = 0; _lettersIncorrectG.size() > i; i++)
+	{
+		cout << _lettersIncorrectG[i] << " ";
+	}
+	cout << endl;
+}
+
+void GameState::printWordsIncorrectG()
+{
+	cout << "Current incorrectly guessed words: ";
+	for (int i = 0; _wordsIncorrectG.size() > i; i++)
+	{
+		cout << _wordsIncorrectG[i] << " ";
+	}
+	cout << endl;
 }
 

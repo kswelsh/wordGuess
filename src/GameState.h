@@ -23,18 +23,27 @@ public:
 
 	string getCurrentWord() const;
 	string getStateOfWord() const;
-	vector<char> getLettersIncorrectG() const;
-	vector<string> getWordsIncorrectG() const;
 	int getAttemptsLeft() const;
 
 	void setCurrentWord(string);
 	void setStateOfWord(string);
-	void setLettersIncorrectG(vector<char>);
-	void setWordsIncorrectG(vector<string>);
 	void setAttemptsLeft(int);
 
 	bool matchUserGuess(string);
+	// pre: parm must be word or letter user guesses
+	// post: if guessed letter and wrong: _lettersIncorrectG now holds said letter (returns FALSE)
+	//       if guessed word and wrong: _wordsIncorrectG now holds said word (returns FALSE)
+	//       if guessed letter and correct: _stateOfWord now has said letter visible
+	//		 (returns FALSE if word not yet complete, TRUE if word is completed)
+	//   	 if guessed word correct, entire word now visible (returns TRUE)
 
+	void printLettersIncorrectG();
+	// pre: none
+	// post: prints out all letters user has incorrectly guessed in current game
+
+	void printWordsIncorrectG();
+	// pre: none
+	// post: prints out all words user has incorrectly guessed in current game
 };
 
 #endif
