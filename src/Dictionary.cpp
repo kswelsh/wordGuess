@@ -49,7 +49,7 @@ string Dictionary::accessRandomWord()
 
 	srand (time(NULL));
 	wordSelector = rand() % _dictionaryWords.size();
-	randomWord = _dictionaryWords[wordSelector]; //CONST SECURITY???
+	randomWord = _dictionaryWords[wordSelector];
 
 	return randomWord;
 }

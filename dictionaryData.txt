@@ -1,3 +1,14 @@
-kyle
-ethan
-lucas
+grapefruit
+apple
+cherry
+mango
+lemon
+pear
+pomegranate
+pineapple
+peach
+banana
+cranberry
+dragonfruit
+fig
+grape

@@ -9,6 +9,16 @@ Player::Player(string pName, int pWins, int pLosses)
 	: _playerName(pName), _playerWins(pWins), _playerLosses(pLosses)
 	{}
 
+void Player::incPlayerWins()
+{
+	_playerWins++;
+}
+
+void Player::incPlayerLosses()
+{
+	_playerLosses++;
+}
+
 string Player::getPlayerName() const
 {
 	return _playerName;
@@ -38,3 +48,5 @@ void Player::setPlayerLosses(int pLosses)
 {
 	_playerLosses = pLosses;
 }
+
+

@@ -17,6 +17,14 @@ public:
 	Player();
 	Player(string pName, int pWins, int pLosses);
 
+	void incPlayerWins();
+	// pre: none
+	// post: _playerWins is now one more than it used to be
+
+	void incPlayerLosses();
+	// pre: none
+	// post: _playerLosses is now one more than it used to be
+
 	string getPlayerName() const;
 	int getPlayerWins() const;
 	int getPlayerLosses() const;
@@ -24,6 +32,8 @@ public:
 	void setPlayerName(string);
 	void setPlayerWins(int);
 	void setPlayerLosses(int);
+
+
 };
 
 #endif

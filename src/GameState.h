@@ -5,7 +5,7 @@
 
 #include <string>
 #include <vector>
-#include <iostream> // DOINT KNOW IF NEEDED YET
+#include <iostream>
 using namespace std;
 
 class GameState
@@ -13,21 +13,13 @@ class GameState
 private:
 	string _currentWord;
 	string _stateOfWord;
-	vector<char> _lettersIncorrectG;
-	vector<string> _wordsIncorrectG;
+	vector<char> _lettersIncorrect;
+	vector<string> _wordsIncorrect;
 	int _attemptsLeft;
 
 public:
-	GameState(){}
-	GameState(string curWord, string sOfWord, vector<char> lIncorrect, vector<string> wIncorrect, int aLeft);
-
-	string getCurrentWord() const;
-	string getStateOfWord() const;
-	int getAttemptsLeft() const;
-
-	void setCurrentWord(string);
-	void setStateOfWord(string);
-	void setAttemptsLeft(int);
+	GameState();
+	GameState(string curWord, string sOfWord, int aLeft);
 
 	bool matchUserGuess(string);
 	// pre: parm must be word or letter user guesses
@@ -37,13 +29,46 @@ public:
 	//		 (returns FALSE if word not yet complete, TRUE if word is completed)
 	//   	 if guessed word correct, entire word now visible (returns TRUE)
 
-	void printLettersIncorrectG();
-	// pre: none
-	// post: prints out all letters user has incorrectly guessed in current game
+	char getIncorrectLetter(int);
+	// pre: parm must be subscript location wanted, parm must be a valid location
+	// post: returns data at provided location
 
-	void printWordsIncorrectG();
+	string getIncorrectWord(int);
+	// pre: parm must be subscript location wanted, parm must be a valid location
+	// post: returns data at provided location
+
+	int getIncorrectLettersSize() const;
 	// pre: none
-	// post: prints out all words user has incorrectly guessed in current game
+	// post: returns the size of the _incorrectLetters vector
+
+	int getIncorrectWordsSize() const;
+	// pre: none
+	// post: returns the size of the _incorrectWords vector
+
+	void clearIncorrectLetters();
+	// pre: none
+	// post: deletes everything in the _incorrectLetters vector
+
+	void clearIncorrectWords();
+	// pre: none
+	// post: deletes everything in the _incorrectWords vector
+
+	void hideStateOfWord();
+	// pre: _currentWord must hold a value
+	// post: for every letter of _currentWord, _stateOfWord now holds a "-"
+
+	void decAttemptsLeft();
+	// pre: _attemptsLeft must be greater than 0
+	// post: _attemptsLeft is now 1 less
+
+	string getCurrentWord() const;
+	string getStateOfWord() const;
+	int getAttemptsLeft() const;
+
+	void setCurrentWord(string);
+	void setStateOfWord(string);
+	void setAttemptsLeft(int);
+
 };
 
 #endif
