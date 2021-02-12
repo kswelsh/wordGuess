@@ -70,19 +70,22 @@ int main()
 			playerWin = gameInstance.matchUserGuess(userGuess);
 			gameInstance.decAttemptsLeft();
 
-			cout << endl << "You have " << gameInstance.getAttemptsLeft() << " attempt(s) left!" << endl;
-			cout << "Current incorrect letters: ";
-			for (int i = 0; i < gameInstance.getIncorrectLettersSize(); i++)
-				{
-					cout << gameInstance.getIncorrectLetter(i) << " ";
-				}
-			cout << endl;
-			cout << "Current incorrect words: ";
-			for (int i = 0; i < gameInstance.getIncorrectWordsSize(); i++)
-				{
-					cout << gameInstance.getIncorrectWord(i) << " ";
-				}
-			cout << endl;
+			if (playerWin == false && gameInstance.getAttemptsLeft() > 0)
+			{
+				cout << endl << "You have " << gameInstance.getAttemptsLeft() << " attempt(s) left!" << endl;
+				cout << "Current incorrect letters: ";
+				for (int i = 0; i < gameInstance.getIncorrectLettersSize(); i++)
+					{
+						cout << gameInstance.getIncorrectLetter(i) << " ";
+					}
+				cout << endl;
+				cout << "Current incorrect words: ";
+				for (int i = 0; i < gameInstance.getIncorrectWordsSize(); i++)
+					{
+						cout << gameInstance.getIncorrectWord(i) << " ";
+					}
+				cout << endl;
+			}
 
 		}
 

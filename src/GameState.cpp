@@ -14,36 +14,46 @@ bool GameState::matchUserGuess(string userGuess)
 	bool playerWin = false;
 	if (userGuess.size() > 1)
 	{
-		if (userGuess == _currentWord)
-		{
-			_stateOfWord = userGuess;
-		}
-		else
-		{
-			_wordsIncorrect.push_back(userGuess);
-		}
+		matchIfWord(userGuess);
 	}
 	else
 	{
-		bool correctGuess = false;
-		for (int i = 0; _currentWord.size() > i; i++)
-		{
-			if (userGuess[0] == _currentWord[i])
-			{
-				_stateOfWord[i] = userGuess[0];
-				correctGuess = true;
-			}
-		}
-		if (correctGuess == false)
-		{
-			_lettersIncorrect.push_back(userGuess[0]);
-		}
+		matchIfLetter(userGuess);
 	}
 	if (_stateOfWord == _currentWord)
 	{
 		playerWin = true;
 	}
 	return playerWin;
+}
+
+void GameState::matchIfLetter(string userGuess)
+{
+	bool correctGuess = false;
+	for (int i = 0; _currentWord.size() > i; i++)
+	{
+		if (userGuess[0] == _currentWord[i])
+		{
+			_stateOfWord[i] = userGuess[0];
+			correctGuess = true;
+		}
+	}
+	if (correctGuess == false)
+	{
+		_lettersIncorrect.push_back(userGuess[0]);
+	}
+}
+
+void GameState::matchIfWord(string userGuess)
+{
+	if (userGuess == _currentWord)
+	{
+		_stateOfWord = userGuess;
+	}
+	else
+	{
+		_wordsIncorrect.push_back(userGuess);
+	}
 }
 
 char GameState::getIncorrectLetter(int location)

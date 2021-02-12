@@ -17,17 +17,22 @@ private:
 	vector<string> _wordsIncorrect;
 	int _attemptsLeft;
 
+	void matchIfLetter(string);
+	// pre: parm must be a single letter string
+	// post: tests if provided letter exists in _currentWord and if so, replaces corresponding empty space in _stateOfWord with provided letter
+
+	void matchIfWord(string);
+	// pre: parm can be any length string
+	// post: tests if provided word is _currentWord, if so, replaces _stateOfWord with provided word
+
 public:
 	GameState();
 	GameState(string curWord, string sOfWord, int aLeft);
 
 	bool matchUserGuess(string);
 	// pre: parm must be word or letter user guesses
-	// post: if guessed letter and wrong: _lettersIncorrectG now holds said letter (returns FALSE)
-	//       if guessed word and wrong: _wordsIncorrectG now holds said word (returns FALSE)
-	//       if guessed letter and correct: _stateOfWord now has said letter visible
-	//		 (returns FALSE if word not yet complete, TRUE if word is completed)
-	//   	 if guessed word correct, entire word now visible (returns TRUE)
+	// post: returns true if player wins, false if yet to win. updates _stateOfWord if users guess was right. updates _lettersIncorrect
+	//       or _wordsIncorrect if user guess was wrong
 
 	char getIncorrectLetter(int);
 	// pre: parm must be subscript location wanted, parm must be a valid location
@@ -47,11 +52,11 @@ public:
 
 	void clearIncorrectLetters();
 	// pre: none
-	// post: deletes everything in the _incorrectLetters vector
+	// post: destroys everything in the _incorrectLetters vector
 
 	void clearIncorrectWords();
 	// pre: none
-	// post: deletes everything in the _incorrectWords vector
+	// post: destroys everything in the _incorrectWords vector
 
 	void hideStateOfWord();
 	// pre: _currentWord must hold a value
