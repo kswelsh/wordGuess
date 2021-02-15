@@ -23,8 +23,8 @@ public:
 	// pre: none
 	// post: dictionary populated with user inputed word(s)
 
-	void populateWithFile();
-	// pre: none
+	void populateWithFile(string);
+	// pre: parm must be name of the file one is using to populate the dictionary, must include . ext (such as .txt)
 	// post: dictionary populated with word(s) from chosen file
 
 	string accessRandomWord();

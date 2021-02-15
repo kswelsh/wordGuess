@@ -20,13 +20,9 @@ void Dictionary::populateWithConsole()
 	}
 }
 
-void Dictionary::populateWithFile()
+void Dictionary::populateWithFile(string fileName)
 {
 	string wordInput;
-	string fileName;
-
-	cout << "Enter the file name you would like to use: " << endl;
-	cin >> fileName;
 
 	ifstream inFile(fileName);
 	if (!inFile)

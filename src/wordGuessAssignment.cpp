@@ -1,10 +1,9 @@
 //============================================================================
-// Name        : wordGuessAssignment.cpp
+// Name        : wordGuessAssignment.cpp (HOMEWORK 1)
 // Author      : Kyle Welsh
-// Version     : N/A
-// Copyright   : N/A
-// Description : This C++ program creates a Word Guess game for the user.
-//============================================================================/
+// Description : This C++ program creates a Word Guess game for the user
+//				 to play. It includes three classes to run the program.
+//============================================================================
 
 #include <iostream>
 #include <string>
@@ -16,9 +15,8 @@ using namespace std;
 #include "Player.h"
 #include "GameState.h"
 
-
 void spaceDelimit(string word)
-// pre: for this function to perform; passed word must be at least 2 characters
+// pre: for this function to perform correctly; passed word must be at least 2 characters
 // post: given word is printed out as space delimited
 {
 	for (int i = 0; i < word.size(); i++)
@@ -33,6 +31,7 @@ int main()
 	Player playerData;
 	GameState gameInstance;
 	string userPlayChoice;
+	string fileChoice;
 	string randomWord;
 	string userGuess;
 	bool playerWin;
@@ -44,9 +43,11 @@ int main()
 	cin >> userPopChoice;
 	if (userPopChoice == 1)
 	{
-		dictionaryData.populateWithFile();
+		cout << "Enter the name of the file you are using: " << endl;
+		cin >> fileChoice;
+		dictionaryData.populateWithFile(fileChoice);
 	}
-	else if (userPopChoice == 2)
+	else
 	{
 		dictionaryData.populateWithConsole();
 	}
@@ -86,7 +87,6 @@ int main()
 					}
 				cout << endl;
 			}
-
 		}
 
 		gameInstance.clearIncorrectLetters();

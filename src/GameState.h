@@ -20,26 +20,28 @@ private:
 	void matchIfLetter(string);
 	// pre: parm must be a single letter string
 	// post: tests if provided letter exists in _currentWord and if so, replaces corresponding empty space in _stateOfWord with provided letter
+	//		 if no match, adds provided letter to _lettersIncorrect
 
 	void matchIfWord(string);
-	// pre: parm can be any length string
-	// post: tests if provided word is _currentWord, if so, replaces _stateOfWord with provided word
+	// pre: parm can be any length string (no spaces)
+	// post: tests if passed word is _currentWord, if so, replaces _stateOfWord with provided word
+	//  	 if no match, adds provided word to _wordsIncorrect
 
 public:
 	GameState();
 	GameState(string curWord, string sOfWord, int aLeft);
 
 	bool matchUserGuess(string);
-	// pre: parm must be word or letter user guesses
+	// pre: parm must be word with no spaces or a single letter
 	// post: returns true if player wins, false if yet to win. updates _stateOfWord if users guess was right. updates _lettersIncorrect
 	//       or _wordsIncorrect if user guess was wrong
 
 	char getIncorrectLetter(int);
-	// pre: parm must be subscript location wanted, parm must be a valid location
+	// pre: parm must be subscript location wanted, parm must be a valid location (in reach)
 	// post: returns data at provided location
 
 	string getIncorrectWord(int);
-	// pre: parm must be subscript location wanted, parm must be a valid location
+	// pre: parm must be subscript location wanted, parm must be a valid location (in reach)
 	// post: returns data at provided location
 
 	int getIncorrectLettersSize() const;
